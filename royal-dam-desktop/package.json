@@ -1,0 +1,86 @@
+{
+  "name": "royal-dam-desktop",
+  "version": "5.4.29",
+  "main": "main.js",
+  "private": true,
+  "description": "Royal Dam ERP desktop application",
+  "author": "Royal Dam",
+  "scripts": {
+    "prepare-renderer": "node scripts/prepare-renderer.js",
+    "prepare-api": "node scripts/prepare-api.js",
+    "clean-dist": "node scripts/clean-dist.mjs",
+    "start": "npm run prepare-renderer && npm run prepare-api && electron .",
+    "dist": "npm run clean-dist && npm run prepare-renderer && npm run prepare-api && node node_modules/electron-builder/cli.js --config.directories.output=dist"
+  },
+  "build": {
+    "appId": "com.royaldam.erp",
+    "productName": "منظومة السد الملكي",
+    "asar": true,
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "renderer/**/*",
+      "local-api.mjs",
+      "services/**/*",
+      "build/**/*",
+      "package.json",
+      "node_modules/**/*",
+      {
+        "from": "build/runtime-deps/es-abstract-get",
+        "to": "node_modules/es-abstract-get"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "royal-dam-desktop-setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico",
+      "runAfterFinish": true
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "logo123presentation-blip",
+        "repo": "royal-dam-erb",
+        "releaseType": "release"
+      }
+    ]
+  },
+  "dependencies": {
+    "@google/genai": "^2.30.0",
+    "bcryptjs": "^2.4.3",
+    "call-bind-apply-helpers": "^1.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "electron-store": "^10.0.0",
+    "electron-updater": "^6.3.9",
+    "es-abstract-get": "1.0.0",
+    "exceljs": "^4.4.0",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.4.0",
+    "mysql2": "^3.11.5",
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "app-builder-bin": "^4.2.0",
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8"
+  }
+}

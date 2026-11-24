@@ -1,0 +1,30 @@
+{
+  "name": "royal-dam-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "seed": "node scripts/seed-admin.js",
+    "migrate": "node scripts/migrate-from-backup.js",
+    "test:offline-sync": "node scripts/test-offline-sync.mjs",
+    "test:quantity-takeoff": "node scripts/test-quantity-takeoff.mjs"
+  },
+  "dependencies": {
+    "@google/genai": "^2.30.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "exceljs": "^4.4.0",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "multer": "^2.4.0",
+    "mysql2": "^3.23.4",
+    "pdf-lib": "^1.17.1"
+  }
+}

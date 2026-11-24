@@ -1,0 +1,16 @@
+node_modules/
+dist/
+dist-*/
+outputs/
+tmp/
+tmp-pdf-check/
+_archive/
+**/.env
+**/.env.*
+!**/.env.example
+*.log
+royal-dam-desktop/index.html
+royal-dam-desktop/renderer/index.html
+royal-dam-desktop/local-api.mjs
+royal-dam-desktop/services/*.mjs
+royal-dam-desktop/.royal-dam-data/
